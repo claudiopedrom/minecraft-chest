@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React, { Suspense, useState } from 'react'
 //Styles
 import './assets/styles/App.scss'
 //Three
@@ -12,12 +12,14 @@ import Model from './components/Three/chest'
 softShadows()
 
 const App = () => {
+  const [open, setOpen] = useState(false)
+
   return (
     <>
       <Canvas colorManagement shadowMap camera={{ position: [-5, 4, 4], fov: 40 }}>
         <Lights />
         <Suspense fallback={null}>
-          <Model />
+          <Model open={open} setOpen={setOpen} />
           <Floor />
         </Suspense>
       </Canvas>
